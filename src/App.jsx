@@ -3,9 +3,9 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Header from "./components/Header";
-import Search from "./pages/Search";
 import Help from "./pages/Help";
 import Offer from "./pages/Offer";
+import SearchPage from "./pages/Search";
 
 const AppLayout = () => {
   return (
@@ -27,7 +27,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/search",
-        element: <Search />,
+        element: <SearchPage />,
       },
       {
         path: "/help",
