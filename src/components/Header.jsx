@@ -1,4 +1,5 @@
 import {
+  BadgePercent,
   ChevronDown,
   LifeBuoy,
   Search,
@@ -46,6 +47,16 @@ const Header = () => {
             <div className="flex items-center text-[#3D4152] font-semibold gap-2 hover:text-[#FC8019]">
               <Search />
               <div>Search</div>
+            </div>
+          </Link>
+          <Link
+            to={"/offer"}
+            className="flex items-center text-[#3D4152] font-semibold gap-2 hover:text-[#FC8019]"
+          >
+            <BadgePercent />
+            <div>
+              Offers
+              <sup className="text-xs font-bold text-[#FC8019]">NEW</sup>
             </div>
           </Link>
           <Link
