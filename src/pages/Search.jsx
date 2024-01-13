@@ -2,6 +2,7 @@
 import { Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import SearchCard from "../components/searchCard";
+import toast from "react-hot-toast";
 
 const popularCuisines = [
   {
@@ -34,9 +35,8 @@ const SearchPage = () => {
   // clearing the search
   const handleClearSearch = () => {
     setSearchVal("");
+    dishes.length = 0;
   };
-
-  console.log(dishes.length);
 
   // Fetching the data based on search
   const fetchSearchData = async (e) => {
@@ -44,12 +44,20 @@ const SearchPage = () => {
 
     setLoading(true);
     try {
+      dishes.length = 0;
       const res = await fetch(
         `https://www.swiggy.com/dapi/restaurants/search/v3?lat=18.5204303&lng=73.8567437&str=${searchVal}&trackingId=undefined&submitAction=ENTER&queryUniqueId=0b81e1b5-6104-65da-7582-552877416c0d `
       );
 
       const data = await res.json();
-      setDishes(data?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards);
+      console.log(data);
+
+      if (data?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards)
+        setDishes(data?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards);
+      else
+        toast.error(`Bhosdike tere baap ne khaya tha kya ${searchVal}`, {
+          duration: 5000,
+        });
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -103,7 +111,8 @@ const SearchPage = () => {
         </div>
       )}
 
-      <div className="h-[100vh] w-[59%] pl-9 px-2 py-2 gap-4 bg-[#F4F5F6] flex flex-wrap border-t-[3px] border-#EDEDEF] overflow-y-scroll">
+      {/* Showing result */}
+      <div className="h-[100vh] w-[59%] pl-6 px-2 py-2 gap-8 bg-[#F4F5F6] flex flex-wrap border-t-[3px] border-#EDEDEF] overflow-y-scroll cws">
         {loading ? (
           <h1>loading...</h1>
         ) : dishes.length === 0 ? (
