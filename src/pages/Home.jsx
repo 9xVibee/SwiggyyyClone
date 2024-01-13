@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import useOnline from "../../utils/useOnline";
+
 const Home = () => {
-  return (
+
+  const isOnline = useOnline();
+
+  return (!isOnline) ? <div>You are offline</div> : (
     <>
       <div>Home</div>
-      <Link to="/cart">
-        <h1>Carts</h1>
-      </Link>
     </>
   );
 };

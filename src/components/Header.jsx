@@ -1,5 +1,4 @@
 import {
-  BadgePercent,
   ChevronDown,
   LifeBuoy,
   Search,
@@ -10,20 +9,22 @@ import logo from "../assets/logo.svg";
 import { useState } from "react";
 import SideBar from "./SideBar";
 import { Link } from "react-router-dom";
+import LoginPage from "./LoginPage";
 
 const Header = () => {
   const [sideBar, setSideBar] = useState(false);
+  const [login, setLogin] = useState(false);
   return (
     <>
       {sideBar && <SideBar />}
+      {login && <LoginPage />}
       <div className="w-screen flex justify-between items-center px-40 py-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
         <div className="w-[28%] flex justify-between items-center">
-          <Link to={"/"}>
-            <img
-              className="w-8 hover:scale-110 transition-all duration-300 ease-in-out"
-              src={logo}
-              alt="logo"
-            />
+          <Link
+            to={"/"}
+            className="w-8 hover:scale-110 transition-all duration-300 ease-in-out"
+          >
+            <img src={logo} alt="logo" />
           </Link>
           <div className="flex items-center gap-2 group hover:cursor-pointer">
             <div className="font-bold border-b-2 border-[#3D4152] text-sm text-[#3D4152] group-hover:text-[#FC8019] group-hover:border-[#FC8019] transition-all duration-300 ease-in-out">
@@ -47,30 +48,26 @@ const Header = () => {
               <div>Search</div>
             </div>
           </Link>
-          <Link to={"/offer"}>
-            <div className="flex items-center text-[#3D4152] font-semibold gap-2 hover:text-[#FC8019]">
-              <BadgePercent />
-              <div>
-                Offers
-                <sup className="text-xs font-bold text-[#FC8019]">NEW</sup>
-              </div>
-            </div>
+          <Link
+            to={"/help"}
+            className="flex items-center text-[#3D4152] font-semibold gap-2 hover:text-[#FC8019]"
+          >
+            <LifeBuoy />
+            <div>Help</div>
           </Link>
-          <Link to={"/help"}>
-            <div className="flex items-center text-[#3D4152] font-semibold gap-2 hover:text-[#FC8019]">
-              <LifeBuoy />
-              <div>Help</div>
-            </div>
-          </Link>
-          <div className="cursor-pointer flex items-center text-[#3D4152] font-semibold gap-2 hover:text-[#FC8019]">
+          <div
+            className="cursor-pointer flex items-center text-[#3D4152] font-semibold gap-2 hover:text-[#FC8019]"
+            onClick={() => setLogin(true)}
+          >
             <User />
-            <div>User</div>
+            <div>Login</div>
           </div>
-          <Link to={"/checkout"}>
-            <div className="flex items-center text-[#3D4152] font-semibold gap-2 hover:text-[#FC8019]">
-              <ShoppingCart />
-              <div>Cart</div>
-            </div>
+          <Link
+            to={"/checkout"}
+            className="flex items-center text-[#3D4152] font-semibold gap-2 hover:text-[#FC8019]"
+          >
+            <ShoppingCart />
+            <div>Cart</div>
           </Link>
         </div>
       </div>
