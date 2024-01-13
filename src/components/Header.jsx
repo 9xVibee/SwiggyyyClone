@@ -40,7 +40,7 @@ const Header = () => {
             />
           </div>
         </div>
-        <div className="flex justify-between items-center w-[50%]">
+        <div className="flex justify-between items-center w-[50%] transition-all ">
           <Link to="/search">
             <div className="flex items-center text-[#3D4152] font-semibold gap-2 hover:text-[#FC8019]">
               <Search />
