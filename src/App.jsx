@@ -42,6 +42,10 @@ const appRouter = createBrowserRouter([
     path: "/offer",
     element: <Offer />,
   },
+  {
+    path: "/restaurant/:id",
+    element: <h1>restaurant</h1>,
+  },
 ]);
 
 export default appRouter;

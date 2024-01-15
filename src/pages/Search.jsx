@@ -50,14 +50,16 @@ const SearchPage = () => {
       );
 
       const data = await res.json();
-      console.log(data);
 
-      if (data?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards)
+      if (data?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards) {
         setDishes(data?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards);
-      else
-        toast.error(`Bhosdike tere baap ne khaya tha kya ${searchVal}`, {
-          duration: 5000,
-        });
+      } else
+        toast.error(
+          `Sorry we don't have any ${searchVal} availabel right now😢`,
+          {
+            duration: 5000,
+          }
+        );
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -112,7 +114,7 @@ const SearchPage = () => {
       )}
 
       {/* Showing result */}
-      <div className="h-[100vh] w-[59%] pl-6 px-2 py-2 gap-8 bg-[#F4F5F6] flex flex-wrap border-t-[3px] border-#EDEDEF] overflow-y-scroll cws">
+      <div className="h-[100vh] w-[59%] pl-6 px-2 py-6 gap-8 bg-[#F4F5F6] flex flex-wrap border-t-[3px] border-#EDEDEF] overflow-y-scroll cws">
         {loading ? (
           <h1>loading...</h1>
         ) : dishes.length === 0 ? (
@@ -120,7 +122,19 @@ const SearchPage = () => {
             Search Something
           </h1>
         ) : (
-          [0, 1, 3, 4, 5].map((val, idx) => <SearchCard key={idx} />)
+          dishes.map((val, idx) => {
+            if (idx > 0)
+              return (
+                <SearchCard
+                  key={idx}
+                  name={val?.card?.card?.restaurant?.info?.name}
+                  resId={val?.card?.card?.restaurant?.info?.id}
+                  imgId={val?.card?.card?.info?.imageId}
+                  dishName={val?.card?.card?.info?.name}
+                  price={val?.card?.card?.info?.price}
+                />
+              );
+          })
         )}
       </div>
     </div>
