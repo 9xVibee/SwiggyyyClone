@@ -5,12 +5,14 @@ import Header from "./components/Header";
 import Help from "./pages/Help";
 import Offer from "./pages/Offer";
 import SearchPage from "./pages/Search";
+import Footer from "./components/Footer";
 
 const AppLayout = () => {
   return (
     <>
       <Header />
       <Outlet />
+      <Footer/>
     </>
   );
 };
@@ -32,6 +34,10 @@ const appRouter = createBrowserRouter([
         path: "/help",
         element: <Help />,
       },
+      {
+        path: "/restaurant/:id",
+        element: <h1>restaurant</h1>,
+      },
     ],
   },
   {
@@ -41,10 +47,6 @@ const appRouter = createBrowserRouter([
   {
     path: "/offer",
     element: <Offer />,
-  },
-  {
-    path: "/restaurant/:id",
-    element: <h1>restaurant</h1>,
   },
 ]);
 

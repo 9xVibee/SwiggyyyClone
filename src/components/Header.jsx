@@ -19,7 +19,7 @@ const Header = () => {
     <>
       {sideBar && <SideBar />}
       {login && <LoginPage />}
-      <div className="w-screen flex justify-between items-center px-40 py-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+      <div className="w-full flex justify-between items-center px-40 py-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
         <div className="w-[28%] flex justify-between items-center">
           <Link
             to={"/"}
@@ -56,7 +56,7 @@ const Header = () => {
             <BadgePercent />
             <div>
               Offers
-              <sup className="text-xs font-bold text-[#FC8019]">NEW</sup>
+              <sup className=" text-[11px] font-bold text-[#FC8019]">NEW</sup>
             </div>
           </Link>
           <Link

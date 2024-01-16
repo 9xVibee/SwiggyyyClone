@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import { Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import SearchCard from "../components/searchCard";
+import SearchCard from "../components/SearchCard";
 import toast from "react-hot-toast";
 
 const popularCuisines = [
@@ -68,7 +67,7 @@ const SearchPage = () => {
   };
 
   return (
-    <div className="w-full h-[100vh] flex items-center flex-col">
+    <div className="w-full h-full flex items-center flex-col">
       {/* Search */}
       <div className="w-[65%] mx-auto">
         <div className="w-full flex justify-center h-32 items-center">
@@ -96,7 +95,7 @@ const SearchPage = () => {
       {/* Popular Cuisins */}
       {dishes.length === 0 && (
         <div className="w-[59%] gap-2 flex flex-col mx-auto py-6">
-          <h1 className="text-2xl font-bold ml-4">Popular Cuisins</h1>
+          <h1 className="text-2xl font-bold ml-4">Popular Cuisines</h1>
           <div className="w-full flex  overflow-x-hidden">
             {popularCuisines.map((imgUrl, idx) => (
               <img
