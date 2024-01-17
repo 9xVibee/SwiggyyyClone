@@ -12,10 +12,16 @@ const Cards = ({
   areaName,
   width,
 }) => {
+  // const widthh = `w-${width}`
   return (
     <>
       <div
-        className={`flex flex-col gap-2 w-${width} hover:scale-[90%] overflow-hidden transition-all duration-500 ease-in-out flex-shrink-0`}
+        className={`flex flex-col gap-2 hover:scale-[90%] overflow-hidden transition-all duration-500 ease-in-out flex-shrink-0`}
+        style={
+          {
+            width: width
+          }
+        }
       >
         <img
           src={SECOND_DATA_IMG_CDN + cloudinaryImageId}
