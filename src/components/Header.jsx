@@ -10,15 +10,25 @@ import logo from "../assets/logo.svg";
 import { useState } from "react";
 import SideBar from "./SideBar";
 import { Link } from "react-router-dom";
-import LoginPage from "./LoginPage";
+import AuthPage from "./AuthPage";
 
 const Header = () => {
   const [sideBar, setSideBar] = useState(false);
-  const [login, setLogin] = useState(false);
+  const [isAuthCompOpen, setIsAuthCompOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState("login");
   return (
     <>
       {sideBar && <SideBar />}
-      {login && <LoginPage />}
+      {isAuthCompOpen && (
+        <AuthPage
+          setIsLogin={setIsLogin}
+          isLogin={isLogin}
+          setIsAuthCompOpen={setIsAuthCompOpen}
+        />
+      )}
+      {isAuthCompOpen && (
+        <div className="w-full h-full bg-[#0000008e] fixed z-10 overflow-hidden"></div>
+      )}
       <div className="w-full flex justify-between items-center px-40 py-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
         <div className="w-[28%] flex justify-between items-center">
           <Link
@@ -68,7 +78,7 @@ const Header = () => {
           </Link>
           <div
             className="cursor-pointer flex items-center text-[#3D4152] font-semibold gap-2 hover:text-[#FC8019]"
-            onClick={() => setLogin(true)}
+            onClick={() => setIsAuthCompOpen(true)}
           >
             <User />
             <div>Login</div>
