@@ -3,9 +3,15 @@
 /* eslint-disable react/prop-types */
 
 import { X } from "lucide-react";
+import Login_logo from "../assets/Login_logo.webp";
 import { useForm } from "react-hook-form";
 
-const AuthPage = ({ setIsLogin, isLogin, setIsAuthCompOpen }) => {
+const AuthPage = ({
+  setIsLogin,
+  isLogin,
+  setIsAuthCompOpen,
+  isAuthCompOpen,
+}) => {
   const {
     register,
     handleSubmit,
@@ -28,7 +34,11 @@ const AuthPage = ({ setIsLogin, isLogin, setIsAuthCompOpen }) => {
   };
   return (
     <>
-      <div className="p-8 fixed right-0 z-20 w-[35%] h-screen bg-white">
+      <div
+        className={`p-8 fixed right-0 top-0 z-20 w-[35%] h-screen bg-white transition-all duration-500 ${
+          isAuthCompOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
         <form className="w-[85%]" onSubmit={handleSubmit(onSubmit)}>
           <X
             size={"2rem"}
@@ -45,16 +55,12 @@ const AuthPage = ({ setIsLogin, isLogin, setIsAuthCompOpen }) => {
                   onClick={handleSetLogin}
                 >
                   {isLogin === "login"
-                    ? "create and account"
+                    ? "create an account"
                     : "login to your account"}
                 </button>
               </p>
             </div>
-            <img
-              src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r"
-              alt=""
-              className="w-28 h-28"
-            />
+            <img src={Login_logo} alt="" className="w-28 h-28" />
           </div>
           <div className="mt-8 flex flex-col gap-4">
             {/* If state is signup then display name input field */}

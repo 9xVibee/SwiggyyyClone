@@ -8,26 +8,39 @@ import {
 } from "lucide-react";
 import logo from "../assets/logo.svg";
 import { useState } from "react";
-import SideBar from "./SideBar";
+import AddressSideBar from "./AddressSideBar";
 import { Link } from "react-router-dom";
 import AuthPage from "./AuthPage";
 
 const Header = () => {
-  const [sideBar, setSideBar] = useState(false);
+  const [isAddressSideBar, setIsAddressSideBar] = useState(false);
   const [isAuthCompOpen, setIsAuthCompOpen] = useState(false);
   const [isLogin, setIsLogin] = useState("login");
   return (
     <>
-      {sideBar && <SideBar />}
-      {isAuthCompOpen && (
+      {
+        <AddressSideBar
+          isAddressSideBar={isAddressSideBar}
+          setIsAddressSideBar={setIsAddressSideBar}
+        />
+      }
+      {
         <AuthPage
           setIsLogin={setIsLogin}
           isLogin={isLogin}
           setIsAuthCompOpen={setIsAuthCompOpen}
+          isAuthCompOpen={isAuthCompOpen}
         />
-      )}
-      {isAuthCompOpen && (
-        <div className="w-full h-full bg-[#0000008e] fixed z-10 overflow-hidden"></div>
+      }
+      {(isAuthCompOpen || isAddressSideBar) && (
+        <div
+          className="w-full h-full bg-[#00000081] fixed z-10 overflow-hidden"
+          onClick={() => {
+            isAddressSideBar
+              ? setIsAddressSideBar(false)
+              : setIsAuthCompOpen(false);
+          }}
+        ></div>
       )}
       <div className="w-full flex justify-between items-center px-40 py-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
         <div className="w-[28%] flex justify-between items-center">
@@ -48,7 +61,7 @@ const Header = () => {
               size={26}
               color="#fc7f18"
               strokeWidth={2}
-              onClick={() => setSideBar(true)}
+              onClick={() => setIsAddressSideBar(true)}
             />
           </div>
         </div>
