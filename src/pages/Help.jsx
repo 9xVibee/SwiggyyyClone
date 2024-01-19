@@ -62,7 +62,7 @@ const Help = () => {
               );
             })}
           </div>
-          <div className="w-[75%] h-[90%] flex flex-col gap-4 p-8">
+          <div className="w-[75%] h-[90%] flex flex-col gap-4 p-8 overflow-y-hidden">
             <h1 className="text-2xl font-bold">{selectedTag}</h1>
             {loading ? (
               <h1>Loading...</h1>

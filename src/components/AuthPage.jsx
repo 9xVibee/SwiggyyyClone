@@ -132,13 +132,13 @@ const AuthPage = ({
                   type="text"
                   className="px-4 py-4 w-full border border-gray-500"
                   placeholder="Password"
-                  {...register("password", {
+                  {...register("passwordl", {
                     required: "Enter your password",
                   })}
                 />
-                {errors.password && (
+                {errors.passwordl && (
                   <div className="text-red-600 text-[0.8rem]">
-                    {errors.password.message}
+                    {errors.passwordl.message}
                   </div>
                 )}
               </div>
