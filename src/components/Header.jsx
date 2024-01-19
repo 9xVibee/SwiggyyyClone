@@ -13,7 +13,6 @@ import { Link, useLocation } from "react-router-dom";
 import AuthPage from "./AuthPage";
 
 const Header = () => {
-  
   const [isAddressSideBar, setIsAddressSideBar] = useState(false);
   const [isAuthCompOpen, setIsAuthCompOpen] = useState(false);
   const [isLogin, setIsLogin] = useState("login");
@@ -53,20 +52,28 @@ const Header = () => {
           >
             <img src={logo} alt="logo" />
           </Link>
-          <div className="flex items-center gap-2 group hover:cursor-pointer">
-            <div className="font-bold border-b-2 border-[#3D4152] text-sm text-[#3D4152] group-hover:text-[#FC8019] group-hover:border-[#FC8019] transition-all duration-300 ease-in-out">
-              Home
-            </div>
-            <div className="text-xs text-[#686a70] group-hover:text-[#a7aab5] font-semibold transition-all duration-300 ease-in-out">
-              789, North Buckingham Street...
-            </div>
-            <ChevronDown
-              size={26}
-              color="#fc7f18"
-              strokeWidth={2}
-              onClick={() => setIsAddressSideBar(true)}
-            />
-          </div>
+          {location.pathname == "/help" ? (
+            <h1 className="mr-[15rem] font-extrabold text-[0.9rem] text-[#3D4152]">
+              HELP
+            </h1>
+          ) : (
+            <>
+              <div className="flex items-center gap-2 group hover:cursor-pointer">
+                <div className="font-bold border-b-2 border-[#3D4152] text-sm text-[#3D4152] group-hover:text-[#FC8019] group-hover:border-[#FC8019] transition-all duration-300 ease-in-out">
+                  Home
+                </div>
+                <div className="text-xs text-[#686a70] group-hover:text-[#a7aab5] font-semibold transition-all duration-300 ease-in-out">
+                  789, North Buckingham Street...
+                </div>
+                <ChevronDown
+                  size={26}
+                  color="#fc7f18"
+                  strokeWidth={2}
+                  onClick={() => setIsAddressSideBar(true)}
+                />
+              </div>
+            </>
+          )}
         </div>
         <div className="flex justify-between items-center w-[50%]">
           <Link to="/search">
