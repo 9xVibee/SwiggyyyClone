@@ -2,6 +2,8 @@ import { MoveLeft, MoveRight } from "lucide-react";
 import useRestaurant from "../utils/useRestaurant";
 import Cards from "./Cards";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { RectangleSkeleton } from "./SkeletonLoader";
 
 const SecondData = () => {
   const secondData = useRestaurant(4);
@@ -21,7 +23,9 @@ const SecondData = () => {
       setCurrentIndex((prevIndex) => Math.min(prevIndex + 2, maxIndex));
     }
   };
-  return (
+  return secondData.length === 0 ? (
+    <RectangleSkeleton />
+  ) : (
     <>
       <div className="flex flex-col gap-6 mt-12 border-b-2 pb-10">
         <div className="flex justify-between items-center">
@@ -53,7 +57,9 @@ const SecondData = () => {
           {secondData?.card?.card?.gridElements?.infoWithStyle?.restaurants
             .slice(currentIndex, currentIndex + imagesToShow)
             .map((data) => (
-              <Cards {...data?.info} width={288} key={data?.info?.id} />
+              <Link to={`/restaurant/${data?.info?.id}`} key={data?.info?.id}>
+                <Cards {...data?.info} width={288} />
+              </Link>
             ))}
         </div>
       </div>

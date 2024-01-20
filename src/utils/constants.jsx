@@ -10,5 +10,8 @@ export const APPSTORE_LOGO =
 export const FIRST_DATA_IMG_CDN =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/";
 
-export const SECOND_DATA_IMG_CDN =
+export const IMG_CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+
+export const FETCH_MENU_URL = (resId) =>
+  `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.9008937&lng=80.9332155&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`;

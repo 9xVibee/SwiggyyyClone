@@ -1,5 +1,5 @@
 import { Search, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchCard from "../components/SearchCard";
 import toast from "react-hot-toast";
 

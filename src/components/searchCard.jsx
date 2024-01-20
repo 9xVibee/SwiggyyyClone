@@ -11,6 +11,7 @@ const SearchCard = ({ name, imgId, dishName, price, resId }) => {
       duration: 2000,
     });
   };
+  
   return (
     <Link to={`/restaurant/${resId}`}>
       <div className="w-[25rem] h-[15rem] bg-white rounded-lg px-4 py-3 hover:shadow-md cursor-pointer transition-all duration-300">
