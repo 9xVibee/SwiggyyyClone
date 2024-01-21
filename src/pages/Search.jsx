@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { Search, X } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import SearchCard from "../components/SearchCard";
 import toast from "react-hot-toast";
+import { useUserDetails } from "../utils/store";
+import { SearchDetailsSkeleton } from "../components/SkeletonLoader";
 
 const popularCuisines = [
   {
@@ -27,9 +30,15 @@ const popularCuisines = [
 ];
 
 const SearchPage = () => {
+  const inputRef = useRef(null);
   const [searchVal, setSearchVal] = useState("");
   const [loading, setLoading] = useState(false);
   const [dishes, setDishes] = useState([]);
+  const [isResetOpen, setIsResetOpen] = useState(false);
+  const [recentlyAdded, setRecentlyAdded] = useState({});
+
+  const { addToCart, itemsInCart, restaurantName, startFresh } =
+    useUserDetails();
 
   // clearing the search
   const handleClearSearch = () => {
@@ -37,15 +46,36 @@ const SearchPage = () => {
     dishes.length = 0;
   };
 
+  console.log(itemsInCart);
+
+  // handling add to cart
+  const handleAddToCart = (...cardDetails) => {
+    if (itemsInCart.length > 0 && restaurantName !== cardDetails[0]) {
+      setIsResetOpen(true);
+      return;
+    }
+
+    addToCart({ ...cardDetails, quantity: 1 });
+    toast.success(
+      cardDetails[0] ? `${cardDetails[0]} Added to cart 😊` : "Added to cart",
+      {
+        duration: 2000,
+      }
+    );
+  };
+
   // Fetching the data based on search
-  const fetchSearchData = async (e) => {
-    if (searchVal.length === 0 || e.keyCode !== 13) return;
+  const fetchSearchData = async (e, isClickedToCuisines, dishName) => {
+    if ((searchVal.length === 0 || e.keyCode !== 13) && !isClickedToCuisines)
+      return;
 
     setLoading(true);
     try {
       dishes.length = 0;
       const res = await fetch(
-        `https://www.swiggy.com/dapi/restaurants/search/v3?lat=18.5204303&lng=73.8567437&str=${searchVal}&trackingId=undefined&submitAction=ENTER&queryUniqueId=0b81e1b5-6104-65da-7582-552877416c0d `
+        `https://www.swiggy.com/dapi/restaurants/search/v3?lat=18.5204303&lng=73.8567437&str=${
+          isClickedToCuisines ? dishName : searchVal
+        }&trackingId=undefined&submitAction=ENTER&queryUniqueId=0b81e1b5-6104-65da-7582-552877416c0d `
       );
 
       const data = await res.json();
@@ -66,77 +96,121 @@ const SearchPage = () => {
     }
   };
 
+  // handling fresh start
+  const handleFreshStart = () => {
+    startFresh(recentlyAdded);
+    setIsResetOpen(false);
+  };
+
   return (
-    <div className="w-full h-full flex items-center flex-col">
-      {/* Search */}
-      <div className="w-[65%] mx-auto">
-        <div className="w-full flex justify-center h-32 items-center">
-          <input
-            type="text"
-            placeholder="Search for restaurants and food"
-            className="w-[90%] border-gray-400 outline-none font-medium text-gray-600 border pl-4 pr-10 py-3 rounded-[4px]"
-            value={searchVal}
-            onChange={(e) => setSearchVal(e.target.value)}
-            onKeyDown={fetchSearchData}
-          />
-          {searchVal.length === 0 ? (
-            <Search
-              className="absolute right-[22%] text-gray-600 cursor-pointer"
-              onClick={fetchSearchData}
+    <>
+      <div
+        className="w-full h-full flex items-center flex-col"
+        onClick={() => {
+          if (isResetOpen) setIsResetOpen(false);
+        }}
+      >
+        {/* Search */}
+        <div className="w-[65%] mx-auto">
+          <div className="w-full flex justify-center h-32 items-center">
+            <input
+              type="text"
+              placeholder="Search for restaurants and food"
+              className="w-[90%] border-gray-400 outline-none font-medium text-gray-600 border pl-4 pr-10 py-3 rounded-[4px]"
+              value={searchVal}
+              onChange={(e) => setSearchVal(e.target.value)}
+              onKeyDown={fetchSearchData}
+              ref={inputRef}
             />
+            {searchVal.length === 0 ? (
+              <Search
+                className="absolute right-[22%] text-gray-600 cursor-pointer"
+                onClick={fetchSearchData}
+              />
+            ) : (
+              <X
+                className="absolute right-[22%] text-gray-600 cursor-pointer"
+                onClick={handleClearSearch}
+              />
+            )}
+          </div>
+        </div>
+        {/* Popular Cuisins */}
+        {searchVal.length === 0 && (
+          <div className="w-[59%] gap-2 flex flex-col mx-auto py-6">
+            <h1 className="text-2xl font-bold ml-4">Popular Cuisines</h1>
+            <div className="w-full flex  overflow-x-hidden">
+              {popularCuisines.map((imgUrl, idx) => (
+                <img
+                  key={idx}
+                  src={imgUrl.URL}
+                  className="w-24 h-32 object-contain cursor-pointer"
+                  onClick={(e) => {
+                    inputRef.current.focus();
+                    setSearchVal(imgUrl.name);
+                    fetchSearchData(e, true, imgUrl.name);
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Showing result */}
+        <div className="h-[100vh] w-[59%] pl-6 px-2 py-6 gap-8 bg-[#F4F5F6] flex flex-wrap border-t-[3px] border-#EDEDEF] overflow-y-scroll cws">
+          {loading ? (
+            <SearchDetailsSkeleton />
+          ) : dishes.length === 0 ? (
+            <h1 className="text-[3rem] font-bold mt-32 text-center h-[90vh] overflow-y-hidden text-[#e2e2e2] tracking-wide mx-auto">
+              Search Something
+            </h1>
           ) : (
-            <X
-              className="absolute right-[22%] text-gray-600 cursor-pointer"
-              onClick={handleClearSearch}
-            />
+            dishes.map((val, idx) => {
+              if (idx > 0)
+                return (
+                  <SearchCard
+                    key={idx}
+                    name={val?.card?.card?.restaurant?.info?.name}
+                    resId={val?.card?.card?.restaurant?.info?.id}
+                    imgId={val?.card?.card?.info?.imageId}
+                    dishName={val?.card?.card?.info?.name}
+                    price={val?.card?.card?.info?.price}
+                    handleAddToCart={handleAddToCart}
+                    setRecentlyAdded={setRecentlyAdded}
+                  />
+                );
+            })
           )}
         </div>
       </div>
-      {/* Popular Cuisins */}
-      {dishes.length === 0 && (
-        <div className="w-[59%] gap-2 flex flex-col mx-auto py-6">
-          <h1 className="text-2xl font-bold ml-4">Popular Cuisines</h1>
-          <div className="w-full flex  overflow-x-hidden">
-            {popularCuisines.map((imgUrl, idx) => (
-              <img
-                key={idx}
-                src={imgUrl.URL}
-                className="w-24 h-32 object-contain cursor-pointer"
-                onClick={() => {
-                  setSearchVal(imgUrl.name);
-                  fetchSearchData();
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      )}
 
-      {/* Showing result */}
-      <div className="h-[100vh] w-[59%] pl-6 px-2 py-6 gap-8 bg-[#F4F5F6] flex flex-wrap border-t-[3px] border-#EDEDEF] overflow-y-scroll cws">
-        {loading ? (
-          <h1>loading...</h1>
-        ) : dishes.length === 0 ? (
-          <h1 className="text-[3rem] font-bold mt-32 text-center h-[90vh] overflow-y-hidden text-[#e2e2e2] tracking-wide mx-auto">
-            Search Something
-          </h1>
-        ) : (
-          dishes.map((val, idx) => {
-            if (idx > 0)
-              return (
-                <SearchCard
-                  key={idx}
-                  name={val?.card?.card?.restaurant?.info?.name}
-                  resId={val?.card?.card?.restaurant?.info?.id}
-                  imgId={val?.card?.card?.info?.imageId}
-                  dishName={val?.card?.card?.info?.name}
-                  price={val?.card?.card?.info?.price}
-                />
-              );
-          })
-        )}
+      {/* Reset Box */}
+      <div
+        className={`fixed left-[35%] bottom-5 w-[32rem] h-[12rem] bg-white shadow-2xl flex flex-col justify-center items-start px-8 gap-2 transition-all duration-300 ${
+          isResetOpen ? "opacity-1 translate-y-0" : "opacity-0 translate-y-72"
+        }`}
+      >
+        <h1 className="text-xl font-bold">Items already in cart</h1>
+        <p className="text-[0.8rem] mb-4">
+          Your cart contains items from other restaurant. Would you like to
+          reset your cart for adding items from this restaurant?
+        </p>
+        <div className="flex gap-4">
+          <button
+            className="uppercase w-[13rem] border-[#60B246] border-2 py-2 hover:shadow-lg transition-all duration-300"
+            onClick={() => setIsResetOpen(false)}
+          >
+            No
+          </button>
+          <button
+            className="uppercase w-[13rem] border-2 border-[#60B246] bg-[#60B246] text-white hover:shadow-lg transition-all duration-300"
+            onClick={handleFreshStart}
+          >
+            Yes, Start Afresh
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

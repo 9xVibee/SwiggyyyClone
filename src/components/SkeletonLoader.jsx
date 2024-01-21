@@ -29,7 +29,6 @@ export const RectangleSkeleton = () => {
     <>
       <div className="mt-12 border-b-2 pb-10 flex flex-col gap-8">
         <Skeleton height="2rem" width="16rem" className="mb-2"></Skeleton>
-
         <div className="flex gap-8 overflow-hidden">
           {Array(4)
             .fill("")
@@ -44,6 +43,42 @@ export const RectangleSkeleton = () => {
             ))}
         </div>
       </div>
+    </>
+  );
+};
+
+export const SearchDetailsSkeleton = () => {
+  return (
+    <>
+      {Array(6)
+        .fill("")
+        .map((e, index) => (
+          <Skeleton
+            width="25rem"
+            height="15rem"
+            borderRadius="8px"
+            key={index}
+            className=" flex-shrink-0"
+          ></Skeleton>
+        ))}
+    </>
+  );
+};
+
+export const HelpAndSupportSkeleton = () => {
+  return (
+    <>
+      {Array(6)
+        .fill("")
+        .map((e, index) => (
+          <Skeleton
+            width="100%"
+            height="5rem"
+            borderRadius="8px"
+            key={index}
+            className=" flex-shrink-0"
+          ></Skeleton>
+        ))}
     </>
   );
 };

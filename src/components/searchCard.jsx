@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
 import { PlusCircle, Star } from "lucide-react";
 import notFoundImgId from "./../assets/th.jpeg";
-import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-const SearchCard = ({ name, imgId, dishName, price, resId }) => {
-  const handleAddToCart = (e, name) => {
-    e.preventDefault();
-    toast.success(name ? `${name} Added to cart 😊` : "Added to cart", {
-      duration: 2000,
-    });
-  };
-  
+const SearchCard = ({
+  name,
+  imgId,
+  dishName,
+  price,
+  resId,
+  handleAddToCart,
+  setRecentlyAdded,
+}) => {
   return (
     <Link to={`/restaurant/${resId}`}>
       <div className="w-[25rem] h-[15rem] bg-white rounded-lg px-4 py-3 hover:shadow-md cursor-pointer transition-all duration-300">
@@ -47,7 +47,11 @@ const SearchCard = ({ name, imgId, dishName, price, resId }) => {
             />
             <button
               className="flex items-center gap-2 absolute bg-[#F4F5F6] px-5 py-1 left-2 shadow-md hover:shadow-none transition-all duration-300 -bottom-4 rounded-md"
-              onClick={(e) => handleAddToCart(e, name)}
+              onClick={(e) => {
+                e.preventDefault();
+                setRecentlyAdded({ name, imgId, dishName, price, resId });
+                handleAddToCart(name, imgId, dishName, price, resId);
+              }}
             >
               Add <PlusCircle width={"1rem"} className="mt-[0.2rem]" />
             </button>
