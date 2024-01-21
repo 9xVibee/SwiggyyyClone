@@ -37,11 +37,3 @@ const RestaurantMenu = () => {
 };
 
 export default RestaurantMenu;
-
-
-{/* <img
-  src={
-    IMG_CDN_URL + restaurantMenu?.cards[0]?.card?.card?.info?.cloudinaryImageId
-  }
-  alt=""
-/>; */}
