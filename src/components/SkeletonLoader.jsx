@@ -1,5 +1,5 @@
 import { Skeleton } from "primereact/skeleton";
-import "primereact/resources/themes/fluent-light/theme.css";
+import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 
 export const CircleSkeleton = () => {
   return (
