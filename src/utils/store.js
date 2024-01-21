@@ -24,4 +24,11 @@ export const useUserDetails = create((set) => ({
       };
     });
   },
+  startFresh: (item) =>
+    set(() => {
+      return {
+        restaurantName: item.name,
+        itemsInCart: [item],
+      };
+    }),
 }));

@@ -10,6 +10,7 @@ const SearchCard = ({
   price,
   resId,
   handleAddToCart,
+  setRecentlyAdded,
 }) => {
   return (
     <Link to={`/restaurant/${resId}`}>
@@ -48,6 +49,7 @@ const SearchCard = ({
               className="flex items-center gap-2 absolute bg-[#F4F5F6] px-5 py-1 left-2 shadow-md hover:shadow-none transition-all duration-300 -bottom-4 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
+                setRecentlyAdded({ name, imgId, dishName, price, resId });
                 handleAddToCart(name, imgId, dishName, price, resId);
               }}
             >
