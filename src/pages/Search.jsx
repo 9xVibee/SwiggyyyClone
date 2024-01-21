@@ -1,7 +1,8 @@
 import { Search, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchCard from "../components/SearchCard";
 import toast from "react-hot-toast";
+import { useUserDetails } from "../utils/store";
 
 const popularCuisines = [
   {
@@ -30,11 +31,35 @@ const SearchPage = () => {
   const [searchVal, setSearchVal] = useState("");
   const [loading, setLoading] = useState(false);
   const [dishes, setDishes] = useState([]);
+  const { addToCart, itemsInCart, restaurantName } = useUserDetails();
 
   // clearing the search
   const handleClearSearch = () => {
     setSearchVal("");
     dishes.length = 0;
+  };
+
+  // handling add to cart
+  const handleAddToCart = (...cardDetails) => {
+    if (itemsInCart.length > 0 && restaurantName !== cardDetails[0]) {
+      toast.error(
+        "Items already in cartYour cart contains items from other restaurant. Would you like to reset your cart for adding items from this restaurant?",
+        {
+          duration: 3000,
+        }
+      );
+      return;
+    }
+
+    addToCart({ ...cardDetails, quantity: 1 });
+    toast.success(
+      cardDetails.name
+        ? `${cardDetails.name} Added to cart 😊`
+        : "Added to cart",
+      {
+        duration: 2000,
+      }
+    );
   };
 
   // Fetching the data based on search
@@ -131,6 +156,7 @@ const SearchPage = () => {
                   imgId={val?.card?.card?.info?.imageId}
                   dishName={val?.card?.card?.info?.name}
                   price={val?.card?.card?.info?.price}
+                  handleAddToCart={handleAddToCart}
                 />
               );
           })
