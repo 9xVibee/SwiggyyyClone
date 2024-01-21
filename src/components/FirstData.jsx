@@ -2,6 +2,7 @@ import { MoveLeft, MoveRight } from "lucide-react";
 import { FIRST_DATA_IMG_CDN } from "../utils/constants";
 import useRestaurant from "../utils/useRestaurant";
 import { useState } from "react";
+import { CircleSkeleton } from "./SkeletonLoader";
 
 const FirstData = () => {
   const firstData = useRestaurant(0);
@@ -20,8 +21,8 @@ const FirstData = () => {
     }
   };
 
-  return firstData.length === 0 ? (
-    <p>Loading...</p>
+  return firstData?.length === 0 ? (
+    <CircleSkeleton />
   ) : (
     <>
       <div className="border-b-2 flex flex-col gap-5 relative">
@@ -53,12 +54,12 @@ const FirstData = () => {
           </div>
         </div>
         <div className="flex overflow-x-scroll cws gap-8">
-          {firstData.card.card.imageGridCards.info
+          {firstData?.card?.card?.imageGridCards?.info
             .slice(currentIndex, currentIndex + imagesToShow)
             .map((data) => (
               <img
-                key={data.id}
-                src={FIRST_DATA_IMG_CDN + data.imageId}
+                key={data?.id}
+                src={FIRST_DATA_IMG_CDN + data?.imageId}
                 className="w-36"
               />
             ))}

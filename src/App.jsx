@@ -6,6 +6,7 @@ import Help from "./pages/Help";
 import Offer from "./pages/Offer";
 import SearchPage from "./pages/Search";
 import Footer from "./components/Footer";
+import RestaurantMenu from "./pages/RestaurantMenu";
 
 const AppLayout = () => {
   return (
@@ -35,8 +36,8 @@ const appRouter = createBrowserRouter([
         element: <Help />,
       },
       {
-        path: "/restaurant/:id",
-        element: <h1>restaurant</h1>,
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu/>,
       },
       {
         path: "/checkout",

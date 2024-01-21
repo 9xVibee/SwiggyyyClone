@@ -1,7 +1,7 @@
 import { Dot } from "lucide-react";
 import { FaStar } from "react-icons/fa6";
 import React from "react";
-import { SECOND_DATA_IMG_CDN } from "../utils/constants";
+import { IMG_CDN_URL } from "../utils/constants";
 
 const Cards = ({
   cloudinaryImageId,
@@ -17,14 +17,12 @@ const Cards = ({
     <>
       <div
         className={`flex flex-col gap-2 hover:scale-[90%] overflow-hidden transition-all duration-500 ease-in-out flex-shrink-0`}
-        style={
-          {
-            width: width
-          }
-        }
+        style={{
+          width: width,
+        }}
       >
         <img
-          src={SECOND_DATA_IMG_CDN + cloudinaryImageId}
+          src={IMG_CDN_URL + cloudinaryImageId}
           alt=""
           className="h-48 rounded-lg object-cover"
         />
