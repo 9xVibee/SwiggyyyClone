@@ -21,11 +21,11 @@ const Cart = () => {
         {/* left Div */}
         <div className="w-[55%] h-[40%] bg-white shadow-lg"></div>
         {/* Right */}
-        <div className="w-[23%] h-[90%] bg-white shadow-xl relative overflow-hidden">
+        <div className="w-[23%] h-[90%] bg-white shadow-xl relative overflow-y-scroll">
           {itemsInCart.length != 0 ? (
             <>
-              <Link to={"/restaurant/123"} className="sticky">
-                <div className="w-full h-[5rem] shadow-md flex justify-center items-center px-8 gap-2">
+              <Link to={"/restaurant/123"} className="sticky top-0">
+                <div className="w-full h-[5rem] shadow-md flex justify-center items-center px-8 gap-2 bg-white">
                   <img
                     src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_100,h_100,c_fill/6067b9c8fcab00e28e4423a4c4cbeaf6"
                     alt=""
@@ -38,6 +38,18 @@ const Cart = () => {
                 </div>
               </Link>
               <div className="w-full overflow-y-scroll cws px-6 py-4 flex flex-col gap-4">
+                {itemsInCart.map((val, key) => (
+                  <PriceAndQuantityInCart key={key} val={val} />
+                ))}
+                {itemsInCart.map((val, key) => (
+                  <PriceAndQuantityInCart key={key} val={val} />
+                ))}
+                {itemsInCart.map((val, key) => (
+                  <PriceAndQuantityInCart key={key} val={val} />
+                ))}
+                {itemsInCart.map((val, key) => (
+                  <PriceAndQuantityInCart key={key} val={val} />
+                ))}
                 {itemsInCart.map((val, key) => (
                   <PriceAndQuantityInCart key={key} val={val} />
                 ))}
@@ -80,7 +92,7 @@ const Cart = () => {
                 <p className="font-semibold mb-1 text-gray-700">Apply Coupon</p>
               </div>
               {/* Total Pay */}
-              <div className="w-full h-[3.2rem] shadow-inner flex justify-between items-center px-8 gap-2 bg-white absolute mt-[5rem]">
+              <div className="w-full h-[3.2rem] shadow-inner flex justify-between items-center px-8 gap-2 bg-white sticky bottom-0">
                 <p className="font-semibold">TO PAY</p>
                 <p className="font-semibold">₹{totalPrice}</p>
               </div>

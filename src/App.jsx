@@ -7,6 +7,7 @@ import Offer from "./pages/Offer";
 import SearchPage from "./pages/Search";
 import Footer from "./components/Footer";
 import RestaurantMenu from "./pages/RestaurantMenu";
+import NotFound from "./pages/NotFound";
 
 const AppLayout = () => {
   return (
@@ -37,7 +38,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/restaurant/:resId",
-        element: <RestaurantMenu/>,
+        element: <RestaurantMenu />,
       },
       {
         path: "/checkout",
@@ -49,6 +50,10 @@ const appRouter = createBrowserRouter([
   {
     path: "/offer",
     element: <Offer />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
