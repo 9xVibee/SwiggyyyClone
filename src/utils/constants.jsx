@@ -14,4 +14,10 @@ export const IMG_CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
 export const FETCH_MENU_URL = (resId) =>
-  `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.9008937&lng=80.9332155&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`;
+  `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5073514&lng=73.8076543&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`;
+
+export const MENU_PAGE_ICONS =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_18,h_18/";
+
+  export const OFFERS_LOGO =
+    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_28,h_28/";
