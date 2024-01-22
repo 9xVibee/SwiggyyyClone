@@ -80,7 +80,7 @@ const Cart = () => {
                 <p className="font-semibold mb-1 text-gray-700">Apply Coupon</p>
               </div>
               {/* Total Pay */}
-              <div className="w-full h-[3.2rem] shadow-inner flex justify-between items-center px-8 gap-2 bg-white sticky mt-[25rem]">
+              <div className="w-full h-[3.2rem] shadow-inner flex justify-between items-center px-8 gap-2 bg-white absolute mt-[5rem]">
                 <p className="font-semibold">TO PAY</p>
                 <p className="font-semibold">₹{totalPrice}</p>
               </div>
