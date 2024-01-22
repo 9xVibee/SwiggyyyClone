@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useParams } from "react-router-dom";
 import useFetchMenu from "../utils/useFetchMenu.jsx";
 import { IMG_CDN_URL } from "../utils/constants";
@@ -30,7 +31,6 @@ const RestaurantMenu = () => {
           </div>
           <div>Rating</div>
         </div>
-        
       </div>
     </>
   );

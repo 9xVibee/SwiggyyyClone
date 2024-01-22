@@ -5,6 +5,7 @@ import SearchCard from "../components/SearchCard";
 import toast from "react-hot-toast";
 import { useUserDetails } from "../utils/store";
 import { SearchDetailsSkeleton } from "../components/SkeletonLoader";
+import useAddToCart from "../hooks/useAddToCart";
 
 const popularCuisines = [
   {
@@ -34,11 +35,9 @@ const SearchPage = () => {
   const [searchVal, setSearchVal] = useState("");
   const [loading, setLoading] = useState(false);
   const [dishes, setDishes] = useState([]);
-  const [isResetOpen, setIsResetOpen] = useState(false);
   const [recentlyAdded, setRecentlyAdded] = useState({});
 
-  const { addToCart, itemsInCart, restaurantName, startFresh } =
-    useUserDetails();
+  const { startFresh } = useUserDetails();
 
   // clearing the search
   const handleClearSearch = () => {
@@ -46,23 +45,8 @@ const SearchPage = () => {
     dishes.length = 0;
   };
 
-  console.log(itemsInCart);
-
   // handling add to cart
-  const handleAddToCart = (...cardDetails) => {
-    if (itemsInCart.length > 0 && restaurantName !== cardDetails[0]) {
-      setIsResetOpen(true);
-      return;
-    }
-
-    addToCart({ ...cardDetails, quantity: 1 });
-    toast.success(
-      cardDetails[0] ? `${cardDetails[0]} Added to cart 😊` : "Added to cart",
-      {
-        duration: 2000,
-      }
-    );
-  };
+  const { handleAddToCart, isResetOpen, setIsResetOpen } = useAddToCart();
 
   // Fetching the data based on search
   const fetchSearchData = async (e, isClickedToCuisines, dishName) => {

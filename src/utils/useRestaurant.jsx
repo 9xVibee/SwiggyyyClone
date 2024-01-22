@@ -6,7 +6,7 @@ const useRestaurant = (index) => {
 
   useEffect(() => {
     getRestaurantData();
-    console.log("useEffectCalled")
+    console.log("useEffectCalled");
   }, []);
 
   async function getRestaurantData() {
