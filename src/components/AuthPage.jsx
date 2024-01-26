@@ -35,7 +35,7 @@ const AuthPage = ({
   return (
     <>
       <div
-        className={`p-8 fixed right-0 top-0 z-20 w-[35%] h-screen bg-white transition-all duration-500 ${
+        className={`p-8 fixed right-0 top-0 z-20 w-full sm:w-[50%] lg:w-[35%] h-screen bg-white transition-all duration-500 ${
           isAuthCompOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
