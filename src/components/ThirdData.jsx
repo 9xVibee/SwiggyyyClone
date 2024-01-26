@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useRestaurant from "../utils/useRestaurant";
+import useRestaurant from "../hooks/useRestaurant";
 import Cards from "./Cards";
 import { RectangleSkeleton } from "./SkeletonLoader";
 

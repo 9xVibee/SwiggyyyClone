@@ -1,6 +1,6 @@
 import { MoveLeft, MoveRight } from "lucide-react";
 import { FIRST_DATA_IMG_CDN } from "../utils/constants";
-import useRestaurant from "../utils/useRestaurant";
+import useRestaurant from "../hooks/useRestaurant";
 import { useState } from "react";
 import { CircleSkeleton } from "./SkeletonLoader";
 
