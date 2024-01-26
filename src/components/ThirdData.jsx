@@ -14,7 +14,7 @@ const ThirdData = () => {
         <h1 className="text-2xl font-bold">
           Restaurants with online food delivery in Pune
         </h1>
-        <div className="flex flex-wrap cws gap-8">
+        <div className="flex flex-wrap max-lg:px-6 justify-center max-lg:justify-between cws gap-8">
           {thirdData?.card?.card?.gridElements?.infoWithStyle?.restaurants?.map(
             (data) => (
               <Link to={`/restaurant/${data?.info?.id}`} key={data?.info?.id}>
