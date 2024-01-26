@@ -123,7 +123,7 @@ const SearchPage = () => {
         {searchVal.length === 0 && (
           <div className="w-[90%] md:w-[65%] gap-2 flex flex-col mx-auto py-6">
             <h1 className="text-2xl font-bold ml-4">Popular Cuisines</h1>
-            <div className="w-full flex  overflow-x-hidden">
+            <div className="w-full flex  overflow-x-scroll cws">
               {popularCuisines.map((imgUrl, idx) => (
                 <img
                   key={idx}

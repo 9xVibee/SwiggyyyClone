@@ -14,8 +14,6 @@ import AuthPage from "./AuthPage";
 import { CgMenuRight } from "react-icons/cg";
 import HeaderSmall from "./HeaderSmall";
 
-
-
 const Header = () => {
   const [isAddressSideBar, setIsAddressSideBar] = useState(false);
   const [isAuthCompOpen, setIsAuthCompOpen] = useState(false);
@@ -42,7 +40,7 @@ const Header = () => {
       }
       {(isAuthCompOpen || isAddressSideBar) && (
         <div
-          className="w-full h-full bg-[#00000081] fixed z-20 z- overflow-hidden"
+          className="w-full h-full bg-[#00000081] fixed z-20 z-overflow-hidden"
           onClick={() => {
             isAddressSideBar
               ? setIsAddressSideBar(false)

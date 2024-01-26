@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import AddressSideBar from "./AddressSideBar";
 import AuthPage from "./AuthPage";
@@ -50,7 +51,7 @@ const HeaderSmall = ({ isHeaderSM, setIsHeaderSM }) => {
       )}
       {/* Small Header Div  */}
       <div
-        className={`w-full h-screen bg-white flex md:hidden z-10 fixed left-0 top-0 flex-col items-center transition-all 
+        className={`w-full h-screen bg-white flex lg:hidden z-10 fixed left-0 top-0 flex-col items-center transition-all 
         duration-500 ${isHeaderSM ? "translate-y-0" : "-translate-y-full"}`}
       >
         <div className="w-full border-2 flex justify-between items-center px-5 sm:px-10 py-3 sm:py-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
