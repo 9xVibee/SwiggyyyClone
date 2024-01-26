@@ -1,5 +1,5 @@
 const Offer = () => {
-  return <div className=""></div>;
+  return <div className="">Offer</div>;
 };
 
 export default Offer;

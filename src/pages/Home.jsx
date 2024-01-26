@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="px-48 mt-8">
+      <div className="px-6 sm:px-16 lg:px-24 xl:px-48 mt-8">
         <FirstData />
         <SecondData />
         <ThirdData />
