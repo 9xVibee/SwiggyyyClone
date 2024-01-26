@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { RES_DATA_URL } from "./constants";
+import { RES_DATA_URL } from "../utils/constants";
 
 const useRestaurant = (index) => {
   const [restaurantData, setRestaurantData] = useState([]);

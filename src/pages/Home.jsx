@@ -1,7 +1,7 @@
-import useOnline from "../utils/useOnline";
 import FirstData from "../components/FirstData";
 import SecondData from "../components/SecondData";
 import ThirdData from "../components/ThirdData";
+import useOnline from "../hooks/useOnline";
 
 const Home = () => {
   const isOnline = useOnline();

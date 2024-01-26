@@ -1,5 +1,5 @@
 import { MoveLeft, MoveRight } from "lucide-react";
-import useRestaurant from "../utils/useRestaurant";
+import useRestaurant from "../hooks/useRestaurant";
 import Cards from "./Cards";
 import { useState } from "react";
 import { Link } from "react-router-dom";
