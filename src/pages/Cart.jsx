@@ -44,18 +44,6 @@ const Cart = () => {
                 {itemsInCart.map((val, key) => (
                   <PriceAndQuantityInCart key={key} val={val} />
                 ))}
-                {itemsInCart.map((val, key) => (
-                  <PriceAndQuantityInCart key={key} val={val} />
-                ))}
-                {itemsInCart.map((val, key) => (
-                  <PriceAndQuantityInCart key={key} val={val} />
-                ))}
-                {itemsInCart.map((val, key) => (
-                  <PriceAndQuantityInCart key={key} val={val} />
-                ))}
-                {itemsInCart.map((val, key) => (
-                  <PriceAndQuantityInCart key={key} val={val} />
-                ))}
               </div>
               {/* Sujjestion */}
               <div className="w-full flex items-center justify-center">

@@ -42,13 +42,14 @@ const Help = () => {
 
   return (
     <div className="h-[120vh] py-20 w-full bg-[#37718E] flex justify-center items-center">
-      <div className="w-[85%] h-[100%] flex flex-col gap-8 mb-20">
-        <div className="text-white ml-14">
+      <div className="w-[90%] md:w-[85%] h-[100%] flex flex-col gap-8 mb-20">
+        <div className="text-white md:ml-14 max-md:text-center">
           <h1 className="text-3xl font-bold">Help & Support</h1>
           <p>Let's take a step ahead and help you better.</p>
         </div>
-        <div className="w-full h-full bg-white flex justify-center items-center gap-4">
-          <div className="h-[95%] bg-[#EDF1F7] w-[20%] pt-4 flex flex-col gap-4 items-end">
+        {/* Main Container */}
+        <div className="w-full h-full bg-white max-[770px]:flex-col flex justify-center items-center gap-4">
+          <div className="h-[95%] bg-[#EDF1F7] w-full md:w-[20%] pt-4 flex flex-col gap-4 items-center md:items-end">
             {tags.map((val, idx) => {
               return (
                 <p
@@ -63,7 +64,7 @@ const Help = () => {
               );
             })}
           </div>
-          <div className="w-[75%] h-[90%] flex flex-col gap-4 p-8 overflow-y-hidden">
+          <div className="w-full sm:w-[90%] md:w-[75%] h-[90%] flex flex-col gap-4 p-4 sm:p-6 md:p-8 overflow-y-hidden">
             <h1 className="text-2xl font-bold">{selectedTag}</h1>
             {loading ? (
               <HelpAndSupportSkeleton />

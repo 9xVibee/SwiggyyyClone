@@ -14,7 +14,7 @@ const SearchCard = ({
 }) => {
   return (
     <Link to={`/restaurant/${resId}`}>
-      <div className="w-[25rem] h-[15rem] bg-white rounded-lg px-4 py-3 hover:shadow-md cursor-pointer transition-all duration-300">
+      <div className="w-full md:px-12 lg:w-[25rem] h-[15rem] bg-white rounded-lg px-4 py-3 hover:shadow-md cursor-pointer transition-all duration-300">
         <div>
           <div className="flex flex-col gap-[0.2rem] text-[#7E808C]">
             <h1 className="font-bold text-[#686B78] text-[0.9rem]">
@@ -35,7 +35,7 @@ const SearchCard = ({
               of...
             </p>
           </div>
-          <div className="rounded-md w-[12rem] h-[5rem] relative">
+          <div className="rounded-md w-[12rem] h-[5rem] relative ">
             <img
               src={
                 imgId
@@ -46,7 +46,7 @@ const SearchCard = ({
               className="w-full h-full object-contain rounded-lg"
             />
             <button
-              className="flex items-center gap-2 absolute bg-[#F4F5F6] px-5 py-1 left-2 shadow-md hover:shadow-none transition-all duration-300 -bottom-4 rounded-md"
+              className="flex items-center gap-2 absolute bg-[#F4F5F6] max-sm:px-4 sm:px-3 py-1  shadow-md hover:shadow-none transition-all duration-300 rounded-md   transform left-1/2 -translate-x-1/2 -bottom-2"
               onClick={(e) => {
                 e.preventDefault();
                 setRecentlyAdded({ name, imgId, dishName, price, resId });

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";

@@ -95,12 +95,12 @@ const SearchPage = () => {
         }}
       >
         {/* Search */}
-        <div className="w-[65%] mx-auto">
+        <div className="w-[90%] md:w-[65%] mx-auto">
           <div className="w-full flex justify-center h-32 items-center">
             <input
               type="text"
               placeholder="Search for restaurants and food"
-              className="w-[90%] border-gray-400 outline-none font-medium text-gray-600 border pl-4 pr-10 py-3 rounded-[4px]"
+              className="w-full border-gray-400 outline-none font-medium text-gray-600 border pl-4 pr-10 py-3 rounded-[4px]"
               value={searchVal}
               onChange={(e) => setSearchVal(e.target.value)}
               onKeyDown={fetchSearchData}
@@ -108,12 +108,12 @@ const SearchPage = () => {
             />
             {searchVal.length === 0 ? (
               <Search
-                className="absolute right-[22%] text-gray-600 cursor-pointer"
+                className="absolute right-[8%] md:right-[18%] text-gray-600 cursor-pointer"
                 onClick={fetchSearchData}
               />
             ) : (
               <X
-                className="absolute right-[22%] text-gray-600 cursor-pointer"
+                className="absolute right-[8%] md:right-[18%] text-gray-600 cursor-pointer"
                 onClick={handleClearSearch}
               />
             )}
@@ -121,7 +121,7 @@ const SearchPage = () => {
         </div>
         {/* Popular Cuisins */}
         {searchVal.length === 0 && (
-          <div className="w-[59%] gap-2 flex flex-col mx-auto py-6">
+          <div className="w-[90%] md:w-[65%] gap-2 flex flex-col mx-auto py-6">
             <h1 className="text-2xl font-bold ml-4">Popular Cuisines</h1>
             <div className="w-full flex  overflow-x-hidden">
               {popularCuisines.map((imgUrl, idx) => (
@@ -141,11 +141,11 @@ const SearchPage = () => {
         )}
 
         {/* Showing result */}
-        <div className="h-[100vh] w-[59%] pl-6 px-2 py-6 gap-8 bg-[#F4F5F6] flex flex-wrap border-t-[3px] border-#EDEDEF] overflow-y-scroll cws">
+        <div className="h-[100vh]  w-[90%] md:w-[80%] xl:w-[65%] px-4 lg:px-0 py-6 gap-4 bg-[#F4F5F6] flex flex-wrap justify-center border-t-[3px] border-#EDEDEF] overflow-y-scroll cws">
           {loading ? (
             <SearchDetailsSkeleton />
           ) : dishes.length === 0 ? (
-            <h1 className="text-[3rem] font-bold mt-32 text-center h-[90vh] overflow-y-hidden text-[#e2e2e2] tracking-wide mx-auto">
+            <h1 className="text-5xl sm:text-[3rem] font-bold mt-32 text-center h-[90vh] overflow-y-hidden text-[#e2e2e2] tracking-wide mx-auto">
               Search Something
             </h1>
           ) : (
@@ -170,7 +170,7 @@ const SearchPage = () => {
 
       {/* Reset Box */}
       <div
-        className={`fixed left-[35%] bottom-5 w-[32rem] h-[12rem] bg-white shadow-2xl flex flex-col justify-center items-start px-8 gap-2 transition-all duration-300 ${
+        className={`fixed w-[25rem] left-[2.5%] sm:left-[35%] bottom-5 sm:w-[32rem] h-[12rem] bg-white shadow-2xl flex flex-col justify-center items-start px-8 gap-2 transition-all duration-300 ${
           isResetOpen ? "opacity-1 translate-y-0" : "opacity-0 translate-y-72"
         }`}
       >
@@ -181,13 +181,13 @@ const SearchPage = () => {
         </p>
         <div className="flex gap-4">
           <button
-            className="uppercase w-[13rem] border-[#60B246] border-2 py-2 hover:shadow-lg transition-all duration-300"
+            className="uppercase w-[10rem] sm:w-[13rem] border-[#60B246] border-2 py-2 hover:shadow-lg transition-all duration-300"
             onClick={() => setIsResetOpen(false)}
           >
             No
           </button>
           <button
-            className="uppercase w-[13rem] border-2 border-[#60B246] bg-[#60B246] text-white hover:shadow-lg transition-all duration-300"
+            className="uppercase w-[10rem] sm:w-[13rem] border-2 border-[#60B246] bg-[#60B246] text-white hover:shadow-lg transition-all duration-300"
             onClick={handleFreshStart}
           >
             Yes, Start Afresh
