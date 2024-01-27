@@ -5,6 +5,7 @@
 import { X } from "lucide-react";
 import Login_logo from "../assets/Login_logo.webp";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const AuthPage = ({
   setIsLogin,
@@ -18,7 +19,8 @@ const AuthPage = ({
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const handleSetLogin = () => {
+  const handleSetLogin = (e) => {
+    e.preventDefault();
     setIsLogin((prev) => (prev == "login" ? "signup" : "login"));
   };
 
@@ -30,16 +32,17 @@ const AuthPage = ({
     await new Promise((res) => setTimeout(() => res("hmm"), 2000)).then(
       (data) => console.log(data)
     );
+    toast.success("Login Successfull");
     console.log(data);
   };
   return (
     <>
       <div
-        className={`p-8 fixed right-0 top-0 z-20 w-full sm:w-[50%] lg:w-[35%] h-screen bg-white transition-all duration-500 ${
+        className={`overflow-y-scroll p-4 md:p-8 fixed right-0 top-0 z-30 w-full sm:w-[50%] lg:w-[35%] h-screen bg-white transition-all duration-500 ${
           isAuthCompOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <form className="w-[85%]" onSubmit={handleSubmit(onSubmit)}>
+        <form className="w-full md:w-[85%]" onSubmit={handleSubmit(onSubmit)}>
           <X
             size={"2rem"}
             className="text-gray-500 font-light cursor-pointer"
