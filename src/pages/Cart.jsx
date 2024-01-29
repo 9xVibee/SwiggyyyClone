@@ -9,6 +9,7 @@ const Cart = () => {
   const { restaurantName, itemsInCart } = useUserDetails();
   const [totalPrice, setTotalPrice] = useState(0);
 
+  console.log(itemsInCart);
   useEffect(() => {
     let total = itemsInCart.reduce((acc, curVal) => {
       return acc + (curVal[3] / 100) * curVal.quantity;
@@ -21,7 +22,7 @@ const Cart = () => {
         {/* left Div */}
         <div className="w-[55%] h-[40%] bg-white shadow-lg"></div>
         {/* Right */}
-        <div className="w-[23%] h-[90%] bg-white shadow-xl relative overflow-y-scroll">
+        <div className="w-[23%] h-[90%] bg-white shadow-xl relative overflow-y-scroll cws">
           {itemsInCart.length != 0 ? (
             <>
               <Link to={"/restaurant/123"} className="sticky top-0">
@@ -41,11 +42,8 @@ const Cart = () => {
                 {itemsInCart.map((val, key) => (
                   <PriceAndQuantityInCart key={key} val={val} />
                 ))}
-                {itemsInCart.map((val, key) => (
-                  <PriceAndQuantityInCart key={key} val={val} />
-                ))}
               </div>
-              {/* Sujjestion */}
+              {/* Suggestion */}
               <div className="w-full flex items-center justify-center">
                 <div className="flex w-[88%] gap-2 bg-[#F9F9F9] py-4 px-4 rounded-md">
                   <svg className="_3iLcN w-[0.8rem]" viewBox="0 0 32 32">
@@ -53,7 +51,7 @@ const Cart = () => {
                   </svg>
                   <input
                     type="text"
-                    placeholder="Any Sujjestion? we will pass it..."
+                    placeholder="Any Suggestion? we will pass it..."
                     className="bg-[#F9F9F9] text-[0.8rem] w-full outline-none"
                   />
                 </div>

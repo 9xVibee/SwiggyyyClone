@@ -6,7 +6,6 @@ const PriceAndQuantityInCart = ({ val }) => {
   const { handleAddToCart } = useAddToCart();
   const { removeItemFromCart } = useUserDetails();
 
-  console.log(val);
   return (
     <div className="w-full flex items-center gap-8">
       <div className="flex items-center gap-2">
