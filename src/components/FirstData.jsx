@@ -21,6 +21,7 @@ const FirstData = () => {
     }
   };
 
+  console.log(firstData);
   return firstData?.length === 0 ? (
     <CircleSkeleton />
   ) : (

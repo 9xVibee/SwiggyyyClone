@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import Help from "./pages/Help";
 import Offer from "./pages/Offer";
 import SearchPage from "./pages/Search";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import RestaurantMenu from "./pages/RestaurantMenu";
 import NotFound from "./pages/NotFound";
 
@@ -45,12 +45,11 @@ const appRouter = createBrowserRouter([
         path: "/checkout",
         element: <Cart />,
       },
+      {
+        path: "/offer",
+        element: <Offer />,
+      },
     ],
-  },
-
-  {
-    path: "/offer",
-    element: <Offer />,
   },
   {
     path: "*",
