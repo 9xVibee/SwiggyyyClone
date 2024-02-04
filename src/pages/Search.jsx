@@ -57,9 +57,9 @@ const SearchPage = () => {
     try {
       dishes.length = 0;
       const res = await fetch(
-        `https://www.swiggy.com/dapi/restaurants/search/v3?lat=18.5204303&lng=73.8567437&str=${
+        `https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Fsearch%2Fv3%3Flat%3D18.5204303%26lng%3D73.8567437%26str%3D${
           isClickedToCuisines ? dishName : searchVal
-        }&trackingId=undefined&submitAction=ENTER&queryUniqueId=0b81e1b5-6104-65da-7582-552877416c0d `
+        }%26trackingId%3Dundefined%26submitAction%3DSUGGESTION%26queryUniqueId%3Dc15f88c1-4a8b-c287-9671-c07f2634f11d%26metaData%3D%257B%2522type%2522%253A%2522DISH%2522%252C%2522data%2522%253A%257B%2522vegIdentifier%2522%253A%2522NA%2522%252C%2522cloudinaryId%2522%253A%2522ocrnq6kwvvrl2ouea492%2522%252C%2522dishFamilyId%2522%253A%2522846613%2522%252C%2522dishFamilyIds%2522%253A%255B%2522846613%2522%255D%257D%252C%2522businessCategory%2522%253A%2522SWIGGY_FOOD%2522%252C%2522displayLabel%2522%253A%2522Dish%2522%257D`
       );
 
       const data = await res.json();

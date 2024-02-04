@@ -23,7 +23,7 @@ const SecondData = () => {
       setCurrentIndex((prevIndex) => Math.min(prevIndex + 2, maxIndex));
     }
   };
-  return secondData.length === 0 ? (
+  return secondData?.length === 0 ? (
     <RectangleSkeleton />
   ) : (
     <>

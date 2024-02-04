@@ -8,7 +8,7 @@ import { RectangleSkeleton } from "./SkeletonLoader";
 const ThirdData = ({ title, Skeleton }) => {
   const thirdData = useRestaurant(1);
 
-  return thirdData.length === 0 ? (
+  return thirdData?.length === 0 ? (
     <Skeleton />
   ) : (
     <>
