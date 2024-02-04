@@ -82,3 +82,26 @@ export const HelpAndSupportSkeleton = () => {
     </>
   );
 };
+
+export const OfferSkeleton = () => {
+  return (
+    <>
+      <div className="mt-12  pb-10 flex flex-col gap-8 h-[100vh] w-full">
+        <Skeleton height="2rem" width="16rem" className="mb-2"></Skeleton>
+        <div className="flex w-full h-full flex-wrap gap-6 md:justify-between justify-center">
+          {Array(10)
+            .fill("")
+            .map((e, index) => (
+              <Skeleton
+                width="16rem"
+                height="17rem"
+                borderRadius="8px"
+                key={index}
+                className="flex-shrink-0"
+              ></Skeleton>
+            ))}
+        </div>
+      </div>
+    </>
+  );
+};

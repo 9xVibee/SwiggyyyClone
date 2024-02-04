@@ -1,5 +1,6 @@
 import FirstData from "../components/FirstData";
 import SecondData from "../components/SecondData";
+import { RectangleSkeleton } from "../components/SkeletonLoader";
 import ThirdData from "../components/ThirdData";
 import useOnline from "../hooks/useOnline";
 
@@ -12,7 +13,10 @@ const Home = () => {
       <div className="px-6 sm:px-16 lg:px-24 xl:px-48 mt-8">
         <FirstData />
         <SecondData />
-        <ThirdData />
+        <ThirdData
+          title={"Restaurants with online food delivery in Pune"}
+          Skeleton={RectangleSkeleton}
+        />
       </div>
     </>
   );
