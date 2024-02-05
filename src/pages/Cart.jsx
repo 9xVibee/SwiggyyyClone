@@ -9,7 +9,6 @@ const Cart = () => {
   const { restaurantName, itemsInCart } = useUserDetails();
   const [totalPrice, setTotalPrice] = useState(0);
 
-  console.log(itemsInCart);
   useEffect(() => {
     let total = itemsInCart.reduce((acc, curVal) => {
       return acc + (curVal[3] / 100) * curVal.quantity;

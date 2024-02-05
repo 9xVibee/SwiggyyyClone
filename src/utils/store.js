@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { create } from "zustand";
 
+console.log(sessionStorage.getItem("items"));
+console.log(sessionStorage.getItem("resName"));
+
 export const useUserDetails = create((set) => ({
   fullname: "",
   email: "",
@@ -9,7 +12,7 @@ export const useUserDetails = create((set) => ({
       ? JSON.parse(sessionStorage.getItem("items"))
       : [],
   restaurantName:
-    sessionStorage.getItem("resName") !== null
+    sessionStorage.getItem("resName") !== undefined
       ? JSON.parse(sessionStorage.getItem("resName"))
       : "",
   addToCart: (item) => {

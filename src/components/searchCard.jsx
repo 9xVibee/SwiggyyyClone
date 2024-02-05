@@ -43,6 +43,7 @@ const SearchCard = ({
                   : notFoundImgId
               }
               alt=""
+              loading="lazy"
               className="w-full h-full object-contain rounded-lg"
             />
             <button

@@ -57,9 +57,13 @@ const SearchPage = () => {
     try {
       dishes.length = 0;
       const res = await fetch(
-        `https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Fsearch%2Fv3%3Flat%3D18.5204303%26lng%3D73.8567437%26str%3D${
-          isClickedToCuisines ? dishName : searchVal
-        }%26trackingId%3Dundefined%26submitAction%3DSUGGESTION%26queryUniqueId%3Dc15f88c1-4a8b-c287-9671-c07f2634f11d%26metaData%3D%257B%2522type%2522%253A%2522DISH%2522%252C%2522data%2522%253A%257B%2522vegIdentifier%2522%253A%2522NA%2522%252C%2522cloudinaryId%2522%253A%2522ocrnq6kwvvrl2ouea492%2522%252C%2522dishFamilyId%2522%253A%2522846613%2522%252C%2522dishFamilyIds%2522%253A%255B%2522846613%2522%255D%257D%252C%2522businessCategory%2522%253A%2522SWIGGY_FOOD%2522%252C%2522displayLabel%2522%253A%2522Dish%2522%257D`
+        window.screen.width == 1536
+          ? `https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Fsearch%2Fv3%3Flat%3D18.5204303%26lng%3D73.8567437%26str%3D${
+              isClickedToCuisines ? dishName : searchVal
+            }%26trackingId%3Dundefined%26submitAction%3DSUGGESTION%26queryUniqueId%3Dc15f88c1-4a8b-c287-9671-c07f2634f11d%26metaData%3D%257B%2522type%2522%253A%2522DISH%2522%252C%2522data%2522%253A%257B%2522vegIdentifier%2522%253A%2522NA%2522%252C%2522cloudinaryId%2522%253A%2522ocrnq6kwvvrl2ouea492%2522%252C%2522dishFamilyId%2522%253A%2522846613%2522%252C%2522dishFamilyIds%2522%253A%255B%2522846613%2522%255D%257D%252C%2522businessCategory%2522%253A%2522SWIGGY_FOOD%2522%252C%2522displayLabel%2522%253A%2522Dish%2522%257D`
+          : `https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fmapi%2Frestaurants%2Fsearch%2Fv3%3Flat%3D18.5204303%26lng%3D73.8567437%26str%3D${
+              isClickedToCuisines ? dishName : searchVal
+            }%26trackingId%3D413651cc-d73e-ccb1-3968-14077541cae4%26submitAction%3DENTER%26queryUniqueId%3D877fec80-5690-1e92-8499-39b0fa8b6460`
       );
 
       const data = await res.json();
@@ -134,6 +138,7 @@ const SearchPage = () => {
                     setSearchVal(imgUrl.name);
                     fetchSearchData(e, true, imgUrl.name);
                   }}
+                  loading="lazy"
                 />
               ))}
             </div>

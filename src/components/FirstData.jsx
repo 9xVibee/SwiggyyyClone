@@ -21,7 +21,6 @@ const FirstData = () => {
     }
   };
 
-  console.log(firstData);
   return firstData?.length === 0 ? (
     <CircleSkeleton />
   ) : (
@@ -62,6 +61,7 @@ const FirstData = () => {
                 key={data?.id}
                 src={FIRST_DATA_IMG_CDN + data?.imageId}
                 className="w-36"
+                loading="lazy"
               />
             ))}
         </div>

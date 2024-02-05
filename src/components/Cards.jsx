@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import { Dot } from "lucide-react";
 import { FaStar } from "react-icons/fa6";
-import React from "react";
 import { IMG_CDN_URL } from "../utils/constants";
 
 const Cards = ({
@@ -25,6 +25,7 @@ const Cards = ({
           src={IMG_CDN_URL + cloudinaryImageId}
           alt=""
           className="h-48 rounded-lg object-cover"
+          loading="lazy"
         />
         <div className="pl-3">
           <h2 className="text-[#414449] font-semibold text-lg text-nowrap">

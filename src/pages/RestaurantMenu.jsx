@@ -12,7 +12,7 @@ const RestaurantMenu = () => {
 
   const { resId } = useParams();
   const restaurantMenu = useFetchMenu(resId);
-
+  console.log(restaurantMenu);
   return !restaurantMenu ? (
     <div>Loading...</div>
   ) : (
@@ -124,10 +124,10 @@ const RestaurantMenu = () => {
           ) : (
             "Hii"
           )}
-          {console.log(
+          {/* {console.log(
             restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
               ?.cards[1]?.card?.card?.title
-          )}
+          )} */}
           <div>
             {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
               ?.cards[1]?.card?.card?.title === "Top Picks" && (
