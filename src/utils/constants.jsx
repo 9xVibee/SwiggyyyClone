@@ -25,3 +25,6 @@ export const MENU_PAGE_ICONS =
 
 export const OFFERS_LOGO =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_28,h_28/";
+
+  export const MENU_CARD_IMAGES =
+    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/";

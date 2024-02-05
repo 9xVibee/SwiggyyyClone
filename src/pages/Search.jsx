@@ -72,7 +72,7 @@ const SearchPage = () => {
         setDishes(data?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards);
       } else
         toast.error(
-          `Sorry we don't have any ${searchVal} availabel right now😢`,
+          `Sorry we don't have any ${searchVal} available right now😢`,
           {
             duration: 5000,
           }

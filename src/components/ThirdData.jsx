@@ -1,9 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import useRestaurant from "../hooks/useRestaurant";
 import Cards from "./Cards";
-import { RectangleSkeleton } from "./SkeletonLoader";
 
 const ThirdData = ({ title, Skeleton }) => {
   const thirdData = useRestaurant(1);

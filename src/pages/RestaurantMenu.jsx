@@ -1,25 +1,29 @@
-/* eslint-disable no-unused-vars */
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { MENU_PAGE_ICONS } from "../utils/constants";
 import { FaStar } from "react-icons/fa6";
 import { Clock4, IndianRupee } from "lucide-react";
 import OfferCard from "../components/OfferCard.jsx";
 import useFetchMenu from "../hooks/useFetchMenu.jsx";
 import { useState } from "react";
+import MenuCards from "../components/MenuCards.jsx";
 
 const RestaurantMenu = () => {
-  const [isVeg, setIsVeg] = useState(false);
+  const [isVegg, setIsVegg] = useState(false);
 
   const { resId } = useParams();
   const restaurantMenu = useFetchMenu(resId);
-  console.log(restaurantMenu);
+  console.log(
+    restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+  );
   return !restaurantMenu ? (
     <div>Loading...</div>
   ) : (
     <>
       <div className=" px-[22rem] py-8">
         <div className="flex gap-2 font-normal text-[9.5px] text-[#7E808C]">
-          <p>Home</p>
+          <Link to="/">
+            <p>Home</p>
+          </Link>
           <p>/</p>
           <p>{restaurantMenu?.cards[0]?.card?.card?.info?.city}</p>
           <p>/</p>
@@ -101,44 +105,28 @@ const RestaurantMenu = () => {
             <p className=" font-medium text-[#3D4152]">Veg Only</p>
             <div
               className={`w-9 h-[1.15rem] p-0.5 rounded-sm flex items-center cursor-pointer ${
-                isVeg ? "bg-green-700" : "bg-[#b4b5b7]"
+                isVegg ? "bg-green-700" : "bg-[#b4b5b7]"
               }`}
-              onClick={() => setIsVeg(!isVeg)}
+              onClick={() => setIsVegg(!isVegg)}
             >
               <div
                 className={`w-4 h-full bg-white rounded-sm flex justify-center items-center duration-500 ${
-                  isVeg ? "translate-x-[98%]" : ""
+                  isVegg ? "translate-x-[98%]" : ""
                 }`}
               >
-                {isVeg && (
+                {isVegg && (
                   <div className="w-2 h-2 rounded-full bg-green-700"></div>
                 )}
               </div>
             </div>
           </div>
         </div>
-        <div>
-          {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-            ?.cards[1]?.card?.card?.title === "Top Picks" ? (
-            <div>Top picks</div>
-          ) : (
-            "Hii"
+        <div className="mt-12 flex flex-col gap-5">
+          {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.map(
+            (data, index) => (
+              <MenuCards key={index} {...data?.card?.card} isVegg={isVegg} />
+            )
           )}
-          {/* {console.log(
-            restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-              ?.cards[1]?.card?.card?.title
-          )} */}
-          <div>
-            {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-              ?.cards[1]?.card?.card?.title === "Top Picks" && (
-              <div>
-                {
-                  restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-                    ?.cards[1]?.card?.card?.title
-                }
-              </div>
-            )}
-          </div>
         </div>
       </div>
     </>

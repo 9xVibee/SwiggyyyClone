@@ -10,7 +10,7 @@ const OfferCard = ({ header, couponCode, description, offerLogo }) => {
         </div>
         <div className="flex justify-start text-[#93959F] items-center font-semibold text-xs gap-1">
           <p>{couponCode}</p>
-          <p>|</p>
+          {description && <p>|</p>}
           <p>{description}</p>
         </div>
       </div>
