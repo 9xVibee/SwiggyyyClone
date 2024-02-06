@@ -175,7 +175,7 @@ const SearchPage = () => {
 
       {/* Reset Box */}
       <div
-        className={`fixed w-[25rem] left-[2.5%] sm:left-[35%] bottom-5 sm:w-[32rem] h-[12rem] bg-white shadow-2xl flex flex-col justify-center items-start px-8 gap-2 transition-all duration-300 ${
+        className={`fixed w-[22rem] left-[3.5%] sm:left-[8.5%] md:left-[20%] lg:left-[35%] bottom-5 sm:w-[32rem] h-[12rem] bg-white shadow-2xl flex flex-col justify-center items-start px-8 gap-2 transition-all duration-300 ${
           isResetOpen ? "opacity-1 translate-y-0" : "opacity-0 translate-y-72"
         }`}
       >
@@ -186,13 +186,13 @@ const SearchPage = () => {
         </p>
         <div className="flex gap-4">
           <button
-            className="uppercase w-[10rem] sm:w-[13rem] border-[#60B246] border-2 py-2 hover:shadow-lg transition-all duration-300"
+            className="uppercase w-[8rem] sm:w-[13rem] border-[#60B246] border-2 py-2 hover:shadow-lg transition-all duration-300"
             onClick={() => setIsResetOpen(false)}
           >
             No
           </button>
           <button
-            className="uppercase w-[10rem] sm:w-[13rem] border-2 border-[#60B246] bg-[#60B246] text-white hover:shadow-lg transition-all duration-300"
+            className="uppercase w-[9rem] sm:w-[13rem] border-2 border-[#60B246] bg-[#60B246] text-white hover:shadow-lg transition-all duration-300"
             onClick={handleFreshStart}
           >
             Yes, Start Afresh

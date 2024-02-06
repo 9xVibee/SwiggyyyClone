@@ -1,12 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { create } from "zustand";
 
-console.log(sessionStorage.getItem("items"));
-console.log(sessionStorage.getItem("resName"));
-
 export const useUserDetails = create((set) => ({
-  fullname: "",
-  email: "",
+  user:
+    sessionStorage.getItem("user") !== null
+      ? JSON.parse(sessionStorage.getItem("user"))
+      : {
+          name: "",
+          email: "",
+          password: "",
+        },
   itemsInCart:
     sessionStorage.getItem("items") !== null
       ? JSON.parse(sessionStorage.getItem("items"))
@@ -98,4 +101,11 @@ export const useUserDetails = create((set) => ({
         };
       }
     }),
+  addUserDetails: (data) => {
+    set(() => {
+      return {
+        user: data,
+      };
+    });
+  },
 }));

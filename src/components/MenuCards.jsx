@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { ChevronDown, ChevronUp } from "lucide-react";
 import MenuItems from "./MenuItems";
 import { useState } from "react";
@@ -14,14 +15,14 @@ const MenuCards = ({ title, itemCards, isVegg }) => {
           onClick={() => setIsOpen(!isOpen)}
         >
           <h1 className="font-bold text-[#3E4152] text-lg">
-            {title} ({itemCards.length})
+            {title} ({itemCards?.length})
           </h1>
           <p className="font-bold text-[#3E4152]">
             {isOpen ? <ChevronDown /> : <ChevronUp />}
           </p>
         </div>
         {isOpen &&
-          itemCards.map((data) => (
+          itemCards?.map((data) => (
             <MenuItems
               {...data?.card?.info}
               key={data?.card?.info?.id}

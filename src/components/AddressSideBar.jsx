@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { LocateFixed, X } from "lucide-react";
 
 const AddressSideBar = ({ isAddressSideBar, setIsAddressSideBar }) => {
@@ -26,7 +27,9 @@ const AddressSideBar = ({ isAddressSideBar, setIsAddressSideBar }) => {
           <p className="font-medium transition-all duration-300 ease-in-out group-hover:text-[#FC8019]">
             Get current location
           </p>
-          <p className=" font-normal text-xs text-[#93959F] pl-9 w-full">Using GPS</p>
+          <p className=" font-normal text-xs text-[#93959F] pl-9 w-full">
+            Using GPS
+          </p>
         </div>
       </div>
     </>
