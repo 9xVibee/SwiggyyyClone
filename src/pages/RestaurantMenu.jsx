@@ -12,9 +12,6 @@ const RestaurantMenu = () => {
 
   const { resId } = useParams();
   const restaurantMenu = useFetchMenu(resId);
-  console.log(
-    restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-  );
   return !restaurantMenu ? (
     <div>Loading...</div>
   ) : (

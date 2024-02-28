@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const MenuCards = ({ title, itemCards, isVegg }) => {
   const [isOpen, setIsOpen] = useState(false);
-  return !title ? (
+  return !title || !itemCards?.length ? (
     ""
   ) : (
     <>
@@ -14,14 +14,14 @@ const MenuCards = ({ title, itemCards, isVegg }) => {
           onClick={() => setIsOpen(!isOpen)}
         >
           <h1 className="font-bold text-[#3E4152] text-lg">
-            {title} ({itemCards.length})
+            {title} ({itemCards?.length})
           </h1>
           <p className="font-bold text-[#3E4152]">
             {isOpen ? <ChevronDown /> : <ChevronUp />}
           </p>
         </div>
         {isOpen &&
-          itemCards.map((data) => (
+          itemCards?.map((data) => (
             <MenuItems
               {...data?.card?.info}
               key={data?.card?.info?.id}

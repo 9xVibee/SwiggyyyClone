@@ -49,7 +49,7 @@ const MenuItems = ({ imageId, description, name, price, isVeg, isVegg }) => {
               <IndianRupee className="w-3 text-[#3E4152] pb-0.5" />
               <p className="text-sm text-[#3E4152]">{price / 100}</p>
             </div>
-            <p className="text-xs text-[#b4b5b9] font-light">{description}</p>
+            <p className="text-xs text-[#adaeb2] font-light">{description}</p>
           </div>
           <div className="w-32 h-24 border bg-[#F0E4CF] rounded-lg relative">
             <img

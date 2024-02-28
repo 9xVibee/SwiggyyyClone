@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import Help from "./pages/Help";
 import Offer from "./pages/Offer";
 import SearchPage from "./pages/Search";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 import RestaurantMenu from "./pages/RestaurantMenu";
 import NotFound from "./pages/NotFound";
 
@@ -15,7 +15,7 @@ const AppLayout = () => {
     <>
       <Header />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
