@@ -6,6 +6,7 @@ import { X } from "lucide-react";
 import Login_logo from "../assets/Login_logo.webp";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useUserDetails } from "../utils/store";
 
 const AuthPage = ({
   setIsLogin,
@@ -18,7 +19,7 @@ const AuthPage = ({
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
-
+  const addUserDetails = useUserDetails((state) => state.addUserDetails);
   const handleSetLogin = (e) => {
     e.preventDefault();
     setIsLogin((prev) => (prev == "login" ? "signup" : "login"));
@@ -29,11 +30,11 @@ const AuthPage = ({
   };
 
   const onSubmit = async (data) => {
-    await new Promise((res) => setTimeout(() => res("hmm"), 2000)).then(
-      (data) => console.log(data)
-    );
     toast.success("Login Successfull");
-    console.log(data);
+
+    addUserDetails(data);
+    sessionStorage.setItem("user", JSON.stringify(data));
+    setIsAuthCompOpen(false);
   };
   return (
     <>
@@ -67,25 +68,23 @@ const AuthPage = ({
           </div>
           <div className="mt-8 flex flex-col gap-4">
             {/* If state is signup then display name input field */}
-            {isLogin === "signup" && (
-              <>
-                <div className="flex flex-col gap-1">
-                  <input
-                    type="name"
-                    className="px-4 py-4 w-full border border-gray-500"
-                    placeholder="Name"
-                    {...register("name", {
-                      required: "Enter your name",
-                    })}
-                  />
-                  {errors.name && (
-                    <div className="text-red-600 text-[0.8rem]">
-                      {errors.name.message}
-                    </div>
-                  )}
+
+            <div className="flex flex-col gap-1">
+              <input
+                type="name"
+                className="px-4 py-4 w-full border border-gray-500"
+                placeholder="Name"
+                {...register("name", {
+                  required: "Enter your name",
+                })}
+              />
+              {errors.name && (
+                <div className="text-red-600 text-[0.8rem]">
+                  {errors.name.message}
                 </div>
-              </>
-            )}
+              )}
+            </div>
+
             <div className="flex flex-col gap-1">
               <input
                 type="email"

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { ChevronDown, ChevronUp } from "lucide-react";
 import MenuItems from "./MenuItems";
 import { useState } from "react";

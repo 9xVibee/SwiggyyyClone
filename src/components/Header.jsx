@@ -13,6 +13,7 @@ import { Link, useLocation } from "react-router-dom";
 import AuthPage from "./AuthPage";
 import { CgMenuRight } from "react-icons/cg";
 import HeaderSmall from "./HeaderSmall";
+import { useUserDetails } from "../utils/store";
 
 const Header = () => {
   const [isAddressSideBar, setIsAddressSideBar] = useState(false);
@@ -20,6 +21,7 @@ const Header = () => {
   const [isHeaderSM, setIsHeaderSM] = useState(false);
   const [isLogin, setIsLogin] = useState("login");
   const location = useLocation();
+  const user = useUserDetails((state) => state.user);
 
   return (
     <>
@@ -127,13 +129,24 @@ const Header = () => {
             <LifeBuoy className="scale-[.65] lg:scale-[.80] xl:scale-100" />
             <div>Help</div>
           </Link>
-          <div
-            className="cursor-pointer flex items-center text-[#3D4152] font-semibold gap-2 transition-all duration-300 ease-in-out hover:text-[#FC8019]"
-            onClick={() => setIsAuthCompOpen(true)}
-          >
-            <User className="scale-[.65] lg:scale-[.80] xl:scale-100" />
-            <div>Login</div>
-          </div>
+          {!user.name ? (
+            <div
+              className="cursor-pointer flex items-center text-[#3D4152] font-semibold gap-2 transition-all duration-300 ease-in-out hover:text-[#FC8019]"
+              onClick={() => setIsAuthCompOpen(true)}
+            >
+              <User className="scale-[.65] lg:scale-[.80] xl:scale-100" />
+              <div>Login</div>
+            </div>
+          ) : (
+            <div className="cursor-pointer flex items-center text-[#3D4152] font-semibold gap-2 transition-all duration-300 ease-in-out hover:text-[#FC8019]">
+              <User className="scale-[.65] lg:scale-[.80] xl:scale-100" />
+              <div>
+                {user.name.length > 5
+                  ? user.name.substring(0, 5) + "..."
+                  : user.name}
+              </div>
+            </div>
+          )}
           <Link
             to={"/checkout"}
             className={`flex items-center font-semibold gap-2 transition-all duration-300 ease-in-out ${

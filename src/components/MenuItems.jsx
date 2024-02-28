@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { IndianRupee } from "lucide-react";
 import { MENU_CARD_IMAGES } from "../utils/constants";
 import Nonveg from "../assets/Nonveg.png";
@@ -31,7 +32,7 @@ const MenuItems = ({ imageId, description, name, price, isVeg, isVegg }) => {
               className="w-full h-full object-cover rounded-lg bg-slate-300"
               alt=""
             />
-            <button className="px-8 text-[#60B246] py-1.5 hover:shadow-md transition-all duration-300 border text-sm font-semibold border-[#D4D5D9] bg-white rounded-md absolute -bottom-3 left-1/2 -translate-x-1/2">
+            <button className="px-8 text-[#60B246] py-1.5 hover:shadow-md transition-all duration-300 border text-sm font-semibold border-[#D4D5D9] bg-white rounded-md absolute -bottom-3 left-1/2 -translate-x-1/2" >
               Add
             </button>
           </div>
